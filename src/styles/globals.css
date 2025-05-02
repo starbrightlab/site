@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-retro-cream text-retro-charcoal font-retroSans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-retroScript;
+  }
+}
+
+@layer components {
+  .halftone-overlay::before {
+    content: '';
+    background-image: url('/images/halftone-dots.svg');
+    background-repeat: repeat;
+    background-size: 200px;
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    z-index: 0;
+  }
+}
+
+@layer utilities {
+  .comet {
+    @apply animate-comet;
+  }
+
+  .orbit {
+    @apply animate-orbit;
+  }
+
+  .pulse-glow {
+    @apply animate-pulse-glow;
+  }
+}
+
+/* Animated elements respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom font loading handling */
+.font-loading {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.fonts-loaded .font-loading {
+  opacity: 1;
+}
