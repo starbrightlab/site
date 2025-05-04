@@ -1,0 +1,57 @@
+.
+├── README.md
+├── components
+│   ├── animations
+│   │   └── StarField.tsx
+│   ├── atoms
+│   │   ├── CurveDivider.tsx
+│   │   ├── Logo.tsx
+│   │   ├── MountainDivider.tsx
+│   │   ├── RetroButton.tsx
+│   │   ├── RetroCard.tsx
+│   │   ├── RetroLoader.tsx
+│   │   └── SectionDivider.tsx
+│   ├── molecules
+│   │   └── MobileMenu.tsx
+│   ├── organisms
+│   │   ├── About.tsx
+│   │   ├── Contact.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Header.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Portfolio.tsx
+│   │   └── Services.tsx
+│   └── templates
+│       └── MainLayout.tsx
+├── directory_tree.txt
+├── docs
+│   ├── design-system.md
+│   ├── implementation-plan.md
+│   ├── mobile-first-principles.md
+│   ├── project-overview.md
+│   └── technical-architecture.md
+├── next-env.d.ts
+├── next.config.js
+├── package-lock.json
+├── package.json
+├── pages
+│   ├── 404.tsx
+│   ├── _app.tsx
+│   ├── _document.tsx
+│   └── index.tsx
+├── postcss.config.js
+├── public
+│   ├── fonts
+│   ├── images
+│   │   └── portfolio
+│   │       ├── encorelando.png
+│   │       └── lwp.png
+│   └── svg
+│       ├── mountain-divider-inverted.svg
+│       └── mountain-divider.svg
+├── styles
+│   └── globals.css
+├── tailwind.config.js
+└── tsconfig.json
+
+15 directories, 40 files

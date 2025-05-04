@@ -1,6 +1,5 @@
 import React from 'react';
 import RetroButton from '../atoms/RetroButton';
-import MountainDivider from '../atoms/MountainDivider';
 import { motion } from 'framer-motion';
 import SectionDivider from '../atoms/SectionDivider';
 
@@ -8,8 +7,6 @@ const Hero: React.FC = () => {
   return (
     <><section className="pt-10 pb-20 md:py-20 lg:py-32 relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute -top-20 -right-20 w-64 h-64 bg-aqua opacity-20 rounded-full blur-3xl"></div>
-      <div className="absolute top-1/2 -left-20 w-48 h-48 bg-coral opacity-10 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center">
