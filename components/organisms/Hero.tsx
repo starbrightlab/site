@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
                 <OrbitalAnimation 
                   size="md"
                   centerColor="bg-mustard"
-                  planetColors={['bg-charcoal', 'bg-aqua', 'bg-coral']} 
+                  planetColors={['bg-charcoal', 'bg-coral', 'bg-aqua']} 
                   className="z-10"
                   speed='slow'
                 />
@@ -151,7 +151,7 @@ const Hero: React.FC = () => {
               <OrbitalAnimation 
                 size="lg" 
                 centerColor="bg-mustard" 
-                planetColors={['bg-charcoal', 'bg-aqua', 'bg-coral']} 
+                planetColors={['bg-charcoal', 'bg-coral', 'bg-aqua']} 
                 className="z-10"
                 speed='slow'
               />

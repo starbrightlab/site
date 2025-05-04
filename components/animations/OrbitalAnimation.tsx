@@ -24,13 +24,13 @@ const OrbitalAnimation: React.FC<OrbitalAnimationProps> = ({
       center: 'w-10 h-10',
       planets: ['w-3 h-3', 'w-4 h-4', 'w-3 h-3'],
       // Define orbit radii in pixels to match the dashed circles
-      orbitRadii: [20, 32, 48], 
+      orbitRadii: [30, 48, 66], 
     },
     md: {
       wrapper: 'w-48 h-48',
       center: 'w-16 h-16',
       planets: ['w-4 h-4', 'w-6 h-6', 'w-5 h-5'],
-      orbitRadii: [30, 48, 72],
+      orbitRadii: [60, 88, 112],
     },
     lg: {
       wrapper: 'w-64 h-64',
