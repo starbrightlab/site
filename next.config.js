@@ -1,12 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  swcMinify: true,
   images: {
-    domains: [], // Add any external image domains here
+    domains: ['assets.starbrightlab.com'],
   },
-  i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
+  webpack(config) {
+    // SVG Configuration
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
+    return config;
   },
 };
 

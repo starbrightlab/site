@@ -1,0 +1,257 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --color-cream: #FFF7E6;
+    --color-aqua: #AEE8E2;
+    --color-orange: #F28C38;
+    --color-mustard: #F2C849;
+    --color-teal: #007C88;
+    --color-coral: #F25D50;
+    --color-charcoal: #2F2F2F;
+    --color-gold: #D4A24C;
+  }
+  
+  html {
+    @apply bg-cream;
+    @apply text-charcoal;
+    @apply font-retroSans;
+  }
+  
+  h1, h2, h3 {
+    @apply font-retroScript;
+  }
+  
+  h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+    @apply mb-6;
+  }
+  
+  h2 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+    @apply mb-4;
+  }
+  
+  h3 {
+    @apply text-xl md:text-2xl lg:text-3xl;
+    @apply mb-3;
+  }
+  
+  p {
+    @apply mb-4;
+  }
+  
+  body {
+    background-image: radial-gradient(circle at 50% 50%, rgba(174, 232, 226, 0.1) 0%, rgba(255, 247, 230, 0) 70%);
+  }
+  
+  /* SVG fill colors for section dividers */
+  .stop-cream { stop-color: var(--color-cream); }
+  .stop-aqua { stop-color: var(--color-aqua); }
+  .stop-mustard { stop-color: var(--color-mustard); }
+  .stop-coral { stop-color: var(--color-coral); }
+  .stop-teal { stop-color: var(--color-teal); }
+  .stop-charcoal { stop-color: var(--color-charcoal); }
+  .stop-gold { stop-color: var(--color-gold); }
+}
+
+@layer components {
+  .retro-card {
+    @apply bg-white rounded-xl p-6;
+    @apply border-4;
+    @apply shadow-card-shadow;
+    @apply transition-all duration-300;
+    transform: translateZ(0);
+  }
+  
+  .retro-card:hover {
+    @apply shadow-none;
+    @apply -translate-x-1 -translate-y-1;
+  }
+  
+  .retro-button {
+    @apply rounded-full px-6 py-2;
+    @apply font-medium text-white;
+    @apply bg-teal hover:bg-coral;
+    @apply transition-all duration-300;
+    @apply shadow-button-shadow;
+    position: relative;
+    bottom: 0;
+    transform: translateZ(0);
+  }
+  
+  .retro-button:hover {
+    @apply shadow-none;
+    bottom: -6px;
+  }
+  
+  .retro-button-secondary {
+    @apply rounded-full px-6 py-2;
+    @apply font-medium text-charcoal;
+    @apply bg-mustard hover:bg-gold;
+    @apply transition-all duration-300;
+    @apply shadow-button-shadow;
+    position: relative;
+    bottom: 0;
+    --tw-shadow-color: #D4A24C;
+    transform: translateZ(0);
+  }
+  
+  .retro-button-secondary:hover {
+    @apply shadow-none;
+    bottom: -6px;
+  }
+  
+  .orbit-container {
+    @apply relative;
+    @apply flex items-center justify-center;
+  }
+  
+  .orbit-item {
+    @apply absolute;
+    @apply animate-orbit;
+  }
+  
+  .star {
+    @apply absolute;
+    @apply animate-twinkle;
+  }
+  
+  .shooting-star {
+    @apply absolute;
+    @apply animate-shooting-star;
+  }
+  
+  /* For mountain dividers */
+  .mountain-divider {
+    height: 48px;
+    width: 100%;
+    background-repeat: repeat-x;
+    background-position: center bottom;
+    background-size: 80px 48px;
+    position: relative;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    z-index: 10;
+  }
+  
+  .mountain-divider-teal {
+    background-image: linear-gradient(to bottom, transparent 60%, #007C88 60%);
+  }
+  
+  .mountain-divider-charcoal {
+    background-image: linear-gradient(to top, transparent 60%, #2F2F2F 60%);
+  }
+  
+  .mountain-divider-cream-to-teal {
+    background-color: #007C88;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .mountain-divider-cream-to-teal::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 50%;
+    background-image: 
+      linear-gradient(45deg, #007C88 50%, transparent 50%),
+      linear-gradient(-45deg, #007C88 50%, #FFF7E6 50%);
+    background-size: 40px 40px;
+    background-position: 0 0;
+    background-repeat: repeat-x;
+  }
+  
+  .mountain-divider-teal-to-charcoal {
+    background-color: #2F2F2F;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .mountain-divider-teal-to-charcoal::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 50%;
+    background-image: 
+      linear-gradient(45deg, #2F2F2F 50%, transparent 50%),
+      linear-gradient(-45deg, #2F2F2F 50%, #007C88 50%);
+    background-size: 40px 40px;
+    background-position: 0 0;
+    background-repeat: repeat-x;
+  }
+  
+  /* Curve divider */
+  .curve-divider {
+    height: 80px;
+    width: 100%;
+    position: relative;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    z-index: 10;
+    overflow: hidden;
+  }
+  
+  .curve-divider-charcoal-to-cream {
+    background-color: #FFF7E6;
+  }
+  
+  .curve-divider-charcoal-to-cream::before {
+    content: "";
+    position: absolute;
+    left: -10%;
+    top: 0;
+    right: -10%;
+    height: 100%;
+    border-radius: 0 0 50% 50%;
+    background-color: #2F2F2F;
+  }
+  
+  /* Service icon */
+  .service-icon {
+    @apply flex items-center justify-center;
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-aqua);
+    border-radius: 16px;
+  }
+  
+  /* Portfolio item */
+  .portfolio-item {
+    @apply bg-white rounded-xl p-6;
+    @apply shadow-card-shadow;
+    @apply transition-all duration-300;
+    border-width: 4px;
+    transform: translateZ(0);
+    overflow: hidden;
+  }
+  
+  .portfolio-item:hover {
+    @apply shadow-none;
+    @apply -translate-x-1 -translate-y-1;
+  }
+  
+  /* Portfolio category */
+  .portfolio-category {
+    @apply inline-block px-3 py-1 text-xs;
+    @apply bg-mustard/20 text-charcoal rounded-full;
+  }
+}
+
+/* Media query for motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
