@@ -7,19 +7,7 @@ interface MobileMenuProps {
   onClose: () => void;
 }
 
-/**
- * Mobile slide‑down menu for small screens (≤ md)
- * -------------------------------------------------
- * • Locks body scroll when open
- * • Slides top → bottom using spring physics
- * • Opaque cream backdrop (no transparency issues)
- * • Click‑outside & ⎋ key close handlers
- * • Full‑viewport height (no tiny scroll bar)
- */
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
-  /* ------------------------------------------------------------------ */
-  /*  Effects                                                            */
-  /* ------------------------------------------------------------------ */
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
     window.addEventListener('keydown', handleEsc);
@@ -30,74 +18,76 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     };
   }, [isOpen, onClose]);
 
-  /* ------------------------------------------------------------------ */
-  /*  Animation variants                                                 */
-  /* ------------------------------------------------------------------ */
   const panelVariants = {
-    hidden: { y: '-100%' },
-    visible: { y: 0, transition: { type: 'spring', stiffness: 280, damping: 30 } },
-    exit: { y: '-100%', transition: { type: 'spring', stiffness: 280, damping: 30 } }
+    hidden:   { y: '-100%' },
+    visible:  { y: 0, transition: { type: 'spring', stiffness: 280, damping: 30 } },
+    exit:     { y: '-100%', transition: { type: 'spring', stiffness: 280, damping: 30 } },
   };
 
-  /* ------------------------------------------------------------------ */
-  /*  Render                                                             */
-  /* ------------------------------------------------------------------ */
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
-          key="mobile-menu"
-          variants={panelVariants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          className="fixed inset-0 z-60 h-screen w-screen bg-cream flex flex-col md:hidden shadow-xl"
-          onClick={onClose}
-        >
-          {/* Inner wrapper — scrolls if content is taller than viewport */}
-          <div className="relative flex flex-col flex-1 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            {/* ---------------------------------------------------------------- */}
-            {/*  Header                                                          */}
-            {/* ---------------------------------------------------------------- */}
-            <header className="flex justify-between items-center p-6 border-b-3 border-teal">
-              <span className="text-2xl font-retroScript text-teal">Navigation</span>
-              <button
-                onClick={onClose}
-                aria-label="Close menu"
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-teal text-cream hover:bg-coral transition-colors duration-300"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </header>
+        <>
+          {/* full‑screen backdrop */}
+          <motion.div
+            key="backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/50"
+            onClick={onClose}
+          />
 
-            {/* ---------------------------------------------------------------- */}
-            {/*  Navigation links                                                 */}
-            {/* ---------------------------------------------------------------- */}
-            <nav className="flex flex-col p-6 space-y-8">
-              {[
-                { href: '#about', label: 'About', dot: 'bg-mustard' },
-                { href: '#services', label: 'Services', dot: 'bg-coral' },
-                { href: '#portfolio', label: 'Portfolio', dot: 'bg-aqua' },
-                { href: '#contact', label: 'Contact', dot: 'bg-orange' }
-              ].map(({ href, label, dot }) => (
-                <Link
-                  key={href}
-                  href={href}
+          {/* sliding panel */}
+          <motion.div
+            key="mobile-menu"
+            variants={panelVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="fixed top-0 left-0 right-0 z-60 bg-cream md:hidden shadow-xl"
+          >
+            {/* only as tall as content, but scroll if > viewport */}
+            <div
+              className="relative flex flex-col max-h-screen overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <header className="flex justify-between items-center p-6 border-b-3 border-teal">
+                <span className="text-2xl font-retroScript text-teal">Navigation</span>
+                <button
                   onClick={onClose}
-                  className="relative px-8 py-2 text-charcoal text-lg font-retroSans hover:text-teal transition-colors duration-300 group"
+                  aria-label="Close menu"
+                  className="w-8 h-8 flex items-center justify-center rounded-full bg-teal text-cream hover:bg-coral transition-colors duration-300"
                 >
-                  <span className={`absolute left-0 top-1/2 -translate-y-1/2 h-3 w-3 rounded-full ${dot} group-hover:bg-teal transition-colors duration-300`} />
-                  {label}
-                  <span className="absolute left-4 right-4 bottom-0 h-0.5 bg-teal scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                </Link>
-              ))}
-            </nav>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </header>
 
-            {/* ---------------------------------------------------------------- */}
-            {/*  Decorative + social                                             */}
-            {/* ---------------------------------------------------------------- */}
+              {/* Nav links */}
+              <nav className="flex flex-col p-6 space-y-8">
+                {[
+                  { href: '#about',     label: 'About',     dot: 'bg-mustard' },
+                  { href: '#services',  label: 'Services',  dot: 'bg-coral' },
+                  { href: '#portfolio', label: 'Portfolio', dot: 'bg-aqua' },
+                  { href: '#contact',   label: 'Contact',   dot: 'bg-orange' },
+                ].map(({ href, label, dot }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    onClick={onClose}
+                    className="relative px-8 py-2 text-charcoal text-lg font-retroSans hover:text-teal transition-colors duration-300 group"
+                  >
+                    <span className={`absolute left-0 top-1/2 -translate-y-1/2 h-3 w-3 rounded-full ${dot} group-hover:bg-teal transition-colors duration-300`} />
+                    {label}
+                    <span className="absolute left-4 right-4 bottom-0 h-0.5 bg-teal scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  </Link>
+                ))}
+              </nav>
+
+              {/* Decorative + social */}
             <div className="mt-auto p-6 border-t-3 border-teal relative">
               {/* Retro orbit SVG */}
               <div className="absolute top-0 right-0 -mt-32 -mr-4 opacity-15 pointer-events-none select-none">
@@ -124,8 +114,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                 </a>
               </div>
             </div>
-          </div>
-        </motion.div>
+            </div>
+          </motion.div>
+        </>
       )}
     </AnimatePresence>
   );
