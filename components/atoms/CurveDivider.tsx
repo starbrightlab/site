@@ -1,9 +1,11 @@
 import React from 'react';
 
+type ColorName = 'charcoal' | 'coral' | 'aqua' | 'teal' | 'cream' | 'mustard';
+
 interface CurveDividerProps {
   inverted?: boolean;
-  fromColor: string;
-  toColor: string;
+  fromColor: ColorName;
+  toColor: ColorName;
   className?: string;
   height?: 'sm' | 'md' | 'lg';
 }
@@ -15,44 +17,34 @@ const CurveDivider: React.FC<CurveDividerProps> = ({
   className = '',
   height = 'md',
 }) => {
-  // Height values as numbers
-  const heightValues = {
-    sm: 48,
-    md: 64,
-    lg: 96,
-  };
-  
-  const dividerHeight = heightValues[height];
-  
-  // Generate SVG path based on whether it's inverted or not
-  const getPath = () => {
-    return inverted
-      ? `M0,${dividerHeight}C360,${dividerHeight*0.1},1080,${dividerHeight*0.1},1440,${dividerHeight}L1440,0L0,0Z`
-      : `M0,0C360,${dividerHeight*0.9},1080,${dividerHeight*0.9},1440,0L1440,${dividerHeight}L0,${dividerHeight}Z`;
-  };
+  // Map your height prop to both SVG viewBox and Tailwind H classes
+  const heightValues = { sm: 48, md: 64, lg: 96 };
+  const heightClasses = { sm: 'h-12', md: 'h-16', lg: 'h-24' };
+  const H = heightValues[height];
 
-  // Height classes for container
-  const heightClasses = {
-    sm: 'h-12',
-    md: 'h-16',
-    lg: 'h-24',
-  };
+  const pathD = inverted
+    ? `M0,${H}C360,${H * 0.1},1080,${H * 0.1},1440,${H}L1440,0L0,0Z`
+    : `M0,0C360,${H * 0.9},1080,${H * 0.9},1440,0L1440,${H}L0,${H}Z`;
 
   return (
-    <div 
-      className={`relative ${heightClasses[height]} w-full overflow-hidden ${className}`}
-      style={{ backgroundColor: toColor }}
+    <div
+      className={`
+        relative w-full overflow-hidden
+        ${heightClasses[height]}
+        bg-${toColor}
+        ${className}
+      `}
     >
       <svg
         className="absolute inset-0 w-full h-full"
-        viewBox={`0 0 1440 ${dividerHeight}`}
+        viewBox={`0 0 1440 ${H}`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
       >
-        <path 
-          d={getPath()} 
-          fill={fromColor}
+        <path
+          d={pathD}
+          className={`fill-current text-${fromColor}`}
         />
       </svg>
     </div>

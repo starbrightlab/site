@@ -82,7 +82,7 @@ const About: React.FC = () => {
           </div>
         </div>
       </section>  
-      <MountainDivider fromColor="#007C88" toColor="#2F2F2F" inverted />
+      <MountainDivider fromColor="teal" toColor="charcoal" inverted />
     </>
   );
 };

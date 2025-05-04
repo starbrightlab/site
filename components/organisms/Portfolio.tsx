@@ -96,11 +96,7 @@ const Portfolio: React.FC = () => {
 
   return (
     <>
-      <section id="portfolio" className="py-20 relative overflow-hidden bg-teal">
-        {/* Background decorative elements */}
-        <div className="absolute top-0 right-1/4 w-64 h-64 bg-aqua opacity-10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-coral opacity-10 rounded-full blur-3xl"></div>
-        
+      <section id="portfolio" className="py-20 relative overflow-hidden bg-teal">        
         <div className="container mx-auto px-6 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -232,7 +228,7 @@ const Portfolio: React.FC = () => {
       </section>
       
       {/* Curved divider to contact section */}
-      <CurveDivider fromColor="#007C88" toColor="#FFF7E6" height="lg" inverted/>
+      <CurveDivider fromColor="teal" toColor="cream" height="lg" inverted/>
     </>
   );
 };

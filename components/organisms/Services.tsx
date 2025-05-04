@@ -110,8 +110,8 @@ const Services: React.FC = () => {
       </section>
       
       <CurveDivider
-        toColor="#2F2F2F"
-        fromColor="#007C88"
+        toColor="charcoal"
+        fromColor="teal"
         height="lg"
         className="absolute top-0 left-0 w-full z-0"
       />
