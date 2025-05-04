@@ -32,6 +32,12 @@ module.exports = {
       borderRadius: {
         'bean': '40% 60% 60% 40% / 60% 30% 70% 40%',
       },
+      zIndex: {
+        '40': '40',
+        '50': '50',
+        '60': '60',
+        '70': '70',
+      },
       animation: {
         'orbit': 'orbit 20s linear infinite',
         'twinkle': 'twinkle 3s ease-in-out infinite',

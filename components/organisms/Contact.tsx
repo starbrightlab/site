@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import RetroButton from '../atoms/RetroButton';
 import RetroCard from '../atoms/RetroCard';
 import SectionDivider from '../atoms/SectionDivider';
+import ContactForm from '../molecules/ContactForm';
 
 const Contact: React.FC = () => {
   return (
@@ -34,48 +34,7 @@ const Contact: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <RetroCard color="teal" hover={false} className="h-full">
-              <h3 className="font-retroScript text-2xl text-coral mb-6">Send a Transmission</h3>
-              
-              <form className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-charcoal mb-2">Your Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-2 border-2 border-mustard rounded-lg focus:border-coral focus:outline-none transition-colors"
-                    placeholder="Captain John Doe"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-charcoal mb-2">Email Address</label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-2 border-2 border-mustard rounded-lg focus:border-coral focus:outline-none transition-colors"
-                    placeholder="john@futuremail.com"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-charcoal mb-2">Your Message</label>
-                  <textarea
-                    id="message"
-                    rows={5}
-                    className="w-full px-4 py-2 border-2 border-mustard rounded-lg focus:border-coral focus:outline-none transition-colors"
-                    placeholder="Tell us about your mission..."
-                  ></textarea>
-                </div>
-                
-                <div className="text-center md:text-left">
-                  <RetroButton
-                    type="submit"
-                    variant="primary"
-                    size="lg"
-                    label="Transmit Message"
-                  />
-                </div>
-              </form>
+              <ContactForm />
             </RetroCard>
           </motion.div>
           
@@ -86,6 +45,7 @@ const Contact: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col gap-6"
           >
+            {/* Address Card
             <RetroCard color="coral" tilt="right">
               <h3 className="font-retroScript text-2xl text-teal mb-4">Location</h3>
               <div className="flex items-start gap-4">
@@ -99,14 +59,13 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-charcoal">
-                    123 Atomic Avenue<br />
-                    Retro City, RC 12345<br />
+                    Orlando, FL<br />
                     United States
                   </p>
                 </div>
               </div>
             </RetroCard>
-            
+            */}
             <RetroCard color="aqua" tilt="left">
               <h3 className="font-retroScript text-2xl text-teal mb-4">Contact Details</h3>
               <div className="space-y-4">
@@ -137,7 +96,7 @@ const Contact: React.FC = () => {
                   <div>
                     <p className="text-charcoal mb-1 font-medium">Call Us:</p>
                     <a href="tel:+1234567890" className="text-teal hover:text-coral transition-colors">
-                      (123) 456-7890
+                      (407) 900-9501
                     </a>
                   </div>
                 </div>

@@ -11,7 +11,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="py-4 px-6 md:px-10 bg-cream bg-opacity-90 backdrop-blur-sm">
+    <header className="py-4 px-6 md:px-10 bg-cream bg-opacity-90 backdrop-blur-sm sticky top-0 z-40 shadow-sm">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex-shrink-0">
           <Link href="/" className="block" aria-label="Starbright Lab - Home">
@@ -37,7 +37,7 @@ const Header: React.FC = () => {
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden p-2 rounded-full bg-teal text-white"
+          className="md:hidden p-2 rounded-full bg-teal text-cream hover:bg-coral transition-colors duration-300 shadow-retro-pop z-50 relative"
           onClick={toggleMenu}
           aria-label="Toggle mobile menu"
         >

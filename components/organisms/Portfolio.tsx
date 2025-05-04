@@ -44,24 +44,24 @@ const Portfolio: React.FC = () => {
       link: 'https://lakewilsonpreserve.com',
       featured: true,
     },
-    {
-      id: 'atomic-cafe',
-      title: 'Atomic Café',
-      description: 'A brand identity and website for a 1950s-inspired coffee shop, featuring custom illustrations and a distinctive retro-futurist design system.',
-      category: 'UI/UX Design',
-      image: '/images/portfolio/atomic-cafe.jpg',
-      color: 'teal',
-      featured: false,
-    },
-    {
-      id: 'orbit-dashboard',
-      title: 'Orbit Dashboard',
-      description: 'A data visualization interface for monitoring system analytics, inspired by mission control screens with intuitive retro-futuristic controls.',
-      category: 'Web Development',
-      image: '/images/portfolio/orbit-dashboard.jpg',
-      color: 'coral',
-      featured: false,
-    },
+//    {
+//      id: 'atomic-cafe',
+//      title: 'Atomic Café',
+//      description: 'A brand identity and website for a 1950s-inspired coffee shop, featuring custom illustrations and a distinctive retro-futurist design system.',
+//      category: 'UI/UX Design',
+//      image: '/images/portfolio/atomic-cafe.jpg',
+//      color: 'teal',
+//      featured: false,
+//    },
+//    {
+//      id: 'orbit-dashboard',
+//      title: 'Orbit Dashboard',
+//      description: 'A data visualization interface for monitoring system analytics, inspired by mission control screens with intuitive retro-futuristic controls.',
+//      category: 'Web Development',
+//      image: '/images/portfolio/orbit-dashboard.jpg',
+//      color: 'coral',
+//      featured: false,
+//   },
   ];
 
   // Function to determine tilt based on project ID
