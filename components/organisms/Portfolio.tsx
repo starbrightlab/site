@@ -29,7 +29,7 @@ const Portfolio: React.FC = () => {
       title: 'encorelando',
       description: 'A mobile-first application enhancing theme park experiences in Orlando by providing comprehensive information about concerts, performances, and festivals.',
       category: 'Mobile App',
-      image: '/images/portfolio/encorelando.jpg',
+      image: '/images/portfolio/encorelando.png',
       color: 'coral',
       link: 'https://encorelando.com',
       featured: true,
