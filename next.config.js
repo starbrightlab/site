@@ -4,7 +4,10 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['assets.starbrightlab.com'],
+    unoptimized: true, // This disables the Image Optimization API for static export
   },
+  // Using the newer recommended approach for static exports
+  output: 'export',
   webpack(config) {
     // SVG Configuration
     config.module.rules.push({
